@@ -1,6 +1,6 @@
     
 function generateDeck() {
-    const suits = ['hearts', 'spades', 'diamonds', 'clubs'];
+    const suits = ['hearts', 'diamonds', 'spades', 'clubs'];
     const values = ['1','2','3','4','5','6','7','8','9','J','K','Q','A'];
     var cardDeck = [];
 
@@ -12,7 +12,8 @@ function generateDeck() {
                     'name': values[val]
                     , 'suit': suits[suit]
                     , 'value': val+1
-                    , 'icon':'&'+suits[suit]+';'
+                    , 'color': (suits[suit]<2)?'red':'black'
+                    , 'icon':'&'+((suits[suit]=='diamonds')?'diams':suits[suit])+';'
                     , 'centerDeco':''
                 }
             )
@@ -21,6 +22,13 @@ function generateDeck() {
     return cardDeck;
 }
 
-function shuffleDeck(){
-    console.log(deck);
+function shuffleDeck(deck){
+    newDeck = [];
+    while (deck.length>0){
+        i = Math.floor(Math.random() * deck.length);
+        newDeck.push(deck[i]);
+        x = deck.splice(i, 1);
+    }
+    return newDeck;
+
 }

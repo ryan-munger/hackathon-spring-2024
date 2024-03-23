@@ -1,11 +1,36 @@
 /*For Cards*/
 
 .gameContainer{
-    padding:40px;
     border: 12px dotted #51341a;
     height: 100vh;
     overflow:scroll;
+    display:grid;
+    grid-template-columns: auto auto auto; 
 }
+
+.centerContainer {
+    display:grid;
+    grid-template-rows: auto auto auto;
+}
+
+.container {
+    display:flex;
+    justify-self: center;
+    margin:15px;
+}
+
+.computerHand, .playerHand {
+    display:flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    vertical-align: middle;
+}
+
+.computerMatches, .playerMatches {
+    width:100%;
+}
+
 .cardFront {
     background-color: white;
     width:110px;
@@ -14,8 +39,9 @@
     grid-template-columns: auto auto auto;
     border-radius: 4px;
     border-width: 1;
-    box-shadow: #BCACA4 0 3px 4px,#51341a 0 6px 13px -3px, #BCACA4 0 -3px 0 inset;
+    box-shadow: #51341a 0 3px 4px,#51341a 0 6px 13px -3px, #51341a 0 -3px 0 inset;
     box-sizing: border-box;
+    margin:10px;
 }
 
 .cardFront p {
@@ -41,8 +67,9 @@
     height:150px;
     border-radius: 4px;
     border-width: 1;
-    box-shadow: #BCACA4 0 3px 4px,#51341a 0 6px 13px -3px, #BCACA4 0 -3px 0 inset;
+    box-shadow: #51341a 0 3px 4px,#51341a 0 6px 13px -3px, #51341a 0 -3px 0 inset;
     box-sizing: border-box;
+    margin:10px;
 }
 
 .cardFront:hover, .cardBack:hover {

@@ -13,20 +13,31 @@
         <h1>Card Game Companion</h1>
         <nav>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Games</a>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="games.html">Games</a>
+                    <ul>
+                        <li><a href="poker.html">Poker</a></li>
+                        <li><a href="blackjack.html">Blackjack</a></li>
+                        <li><a href="goFish.html">Go Fish!</a></li>
+                    </ul>
                 </li>
-                <li><a href="#">I'm feeling lucky</a></li>
-                <li><a href="#">About Us</a></li>
+                <li><a id="lucky">I'm feeling lucky</a></li>
+                <li><a href="about.html">About Us</a></li>
             </ul>
         </nav>
     </header>
     <div id="gameContainer" class="gameContainer">
         <div id="computerMatches" class="computerMatches"></div>
-            <div id="centerContainer" class="hands">
-                <div id="computerHand" class="computerHand"></div>
-                <div id="centerDeck" class="centerDeck"></div>
-                <div id="playerHand" class="playerHand"></div>
+            <div id="centerContainer" class="centerContainer">
+                <div class="container">
+                    <div id="computerHand" class="computerHand"></div>
+                </div>
+                <div class="container">
+                    <div id="centerDeck" class="centerDeck"></div>
+                </div>
+                <div class="container">
+                    <div id="playerHand" class="playerHand"></div>
+                </div>
             </div>
         <div id="playerMatches" class="playerMatches"></div>
 
