@@ -1,4 +1,4 @@
-/* Reset styles */
+
 * {
     margin: 0;
     padding: 0;
@@ -8,10 +8,14 @@
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
+    background-color: darkgoldenrod;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 header {
-    background-color: #333;
+    background-color: darkgreen;
     color: #fff;
     padding: 20px;
 }
@@ -28,10 +32,11 @@ nav ul {
 nav ul li {
     display: inline;
     margin-right: 20px;
+    position: relative; 
 }
 
 nav ul li a {
-    color: #fff;
+    color: gold;
     text-decoration: none;
 }
 
@@ -42,7 +47,10 @@ nav ul li a:hover {
 nav ul ul {
     display: none;
     position: absolute;
-    background-color: #333;
+    top: 100%; 
+    left: 0; 
+    background-color: darkgreen;
+    z-index: 1; 
 }
 
 nav ul li:hover > ul {
@@ -54,9 +62,24 @@ section.featured {
     padding: 50px 0;
 }
 
+.fhead {
+    font-size: 36px;
+}
+
+.fsub {
+    font-size: 16px;
+}
+
 footer {
-    background-color: #333;
+    background-color: darkgreen;
     color: #fff;
     text-align: center;
     padding: 20px;
+    margin-top: auto;
+}
+
+.larger {
+    font-size: 1.2em; 
+    padding: 10px 20px; 
+    background-color: gold;
 }
