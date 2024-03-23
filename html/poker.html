@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Card Game Companion</title>
     <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/poker.css">
 </head>
 <body>
     <header>
@@ -26,14 +27,36 @@
     </header>
 
     <section class="featured">
-        <h1 class="fhead">p p p pokerface</h1>
-        <p class="fsub">game</p>
+        <h1 class="fhead">Poker</h1>
+        <p>Hand Checker (Format is value followed by suit. Ex. Ace of spades = As, 6 of hearts = 6h):</p>
+        <form id="myForm">
+            <label for="textInput"><Strong>Input Hand Here:</strong></label>
+            <input type="text" id="textInput" name="textInput" required>
+            <input type="submit" value="Submit">
+          </form>
+          
+          <div id="myModal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <p id="modalOutput"></p>
+            </div>
+          </div>
+        <br>
+        <p class="fsub">There are many variants of poker depending on trends, geographical location, and culture. Some variants include Texas Hold'em, Omaha, Seven Card Stud, and Razz. </p>
+        <br>
+        <p class="fsub"><Strong>Texas Hold'em</Strong> is the most prolific variant. Rules can be found <a href="https://en.wikipedia.org/wiki/Texas_hold_'em#Rules">here</a>.</p>
+        <br>
+        <img src="../static/Poker-hands-sheet.webp" alt="poker hands">
+        <br>
+        
     </section>
 
     <footer>
         <p>&copy; 2024 Card Game Companion. All rights reserved.</p>
     </footer>
-
-    <script src="../js/home.js"></script>
 </body>
+
+<script src="../js/home.js"></script>
+<script src="../js/poker.js"></script>
+
 </html>
