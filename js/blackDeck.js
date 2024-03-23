@@ -1,7 +1,7 @@
     
 function generateDeck() {
     const suits = ['hearts', 'diamonds', 'spades', 'clubs'];
-    const values = ['2','3','4','5','6','7','8','9','10','J','K','Q','A'];
+    const values = ['2','3','4','5','6','7','8','9','10', 'J','K','Q','A'];
     var cardDeck = [];
 
     for (let suit=0; suit<suits.length; suit++){
@@ -11,11 +11,10 @@ function generateDeck() {
                 {
                     'name': values[val]
                     , 'suit': suits[suit]
-                    , 'value': val+1
-                    , 'color': (suit<2)?'red':'black'
+                    , 'value': (val > 10) ? 10 : val + 2
+                    , 'color': (suits[suit]<2)?'red':'black'
                     , 'icon':'&'+((suits[suit]=='diamonds')?'diams':suits[suit])+';'
                     , 'centerDeco':''
-                    , 'faceUp' : false
                 }
             )
         }

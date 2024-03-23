@@ -8,10 +8,17 @@
     grid-template-columns: auto auto auto; 
 }
 
+.button {
+    font-size: 30px;
+    background-color: gold;    
+    max-width: 200px;
+}
+
 .centerContainer {
     display:grid;
     grid-template-rows: auto auto auto;
 }
+
 
 .container {
     display:flex;

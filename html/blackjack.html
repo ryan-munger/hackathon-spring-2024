@@ -36,7 +36,9 @@
         <h1 class="fhead">Blackjack</h1>
         <p class="fsub">The rules of Blackjack can be found <a
                 href="https://bicyclecards.com/how-to-play/blackjack/">here</a>.</p>
+        <br>
     </section>
+  
     <div id="gameContainer" class="gameContainer">
         <div id="computerMatches" class="computerMatches"></div>
         <div id="centerContainer" class="centerContainer">
@@ -49,6 +51,8 @@
             <div class="container">
                 <div id="playerHand" class="playerHand"></div>
             </div>
+            <button class="button" onclick="stand()">Stand</button>
+            <button class="button" onclick="hit()">Hit</button>
         </div>
         <div id="playerMatches" class="playerMatches"></div>
     </div>
@@ -58,6 +62,7 @@
     </footer>
 
     <script src="../js/blackjack.js"></script>
+    <script src="../js/blackDeck.js"></script>   
 </body>
 
 </html>
