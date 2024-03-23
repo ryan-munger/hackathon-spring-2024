@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Card Game Companion</title>
     <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/games.css">
 </head>
+
 <body>
     <header>
         <h1>Card Game Companion</h1>
@@ -15,7 +18,7 @@
                 <li><a href="games.html">Games</a>
                     <ul>
                         <li><a href="poker.html">Poker</a></li>
-                        <li><a href="blackjack">Blackjack</a></li>
+                        <li><a href="blackjack.html">Blackjack</a></li>
                         <li><a href="goFish.html">Go Fish!</a></li>
                     </ul>
                 </li>
@@ -26,8 +29,18 @@
     </header>
 
     <section class="featured">
-        <h1 class="fhead">game</h1>
-        <p class="fsub">game</p>
+        <h1 class="fhead">Game Directory</h1>
+        <div class="container">
+            <a href="goFish.html" class="tile" style="background-image: url('../static/goFish.jpg')">
+                <h2></h2>
+            </a>
+            <a href="blackjack.html" class="tile" style="background-image: url('../static/blackjack.jpg')">
+                <h2>Blackjack</h2>
+            </a>
+            <a href="poker.html" class="tile" style="background-image: url('../static/poker.avif')">
+                <h2>Poker</h2>
+            </a>
+        </div>
     </section>
 
     <footer>
@@ -36,4 +49,5 @@
 
     <script src="../js/home.js"></script>
 </body>
+
 </html>
