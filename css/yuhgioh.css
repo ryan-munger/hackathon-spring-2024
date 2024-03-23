@@ -1,0 +1,33 @@
+.left-image,
+.right-image {
+    position: fixed;
+    /* Fix the position relative to the viewport */
+    top: 20%;
+    /* Position at the top of the viewport */
+    height: 60vh;
+    /* Take up the full height of the viewport */
+    width: auto;
+    /* Automatically adjust the width */
+}
+
+.left-image {
+    left: 10%;
+    width: 20%;
+    /* Position at the left side of the viewport */
+}
+
+.right-image {
+    right: 10%;
+    width: 20%;
+    /* Position at the right side of the viewport */
+}
+
+/* Adjustments for responsiveness */
+@media (max-width: 300px) {
+
+    .left-image,
+    .right-image {
+        display: none;
+        /* Hide the images on smaller screens */
+    }
+}

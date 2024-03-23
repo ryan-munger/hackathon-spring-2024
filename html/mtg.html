@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Card Game Companion</title>
     <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/mtg.css">
     <link rel="icon" type="image/webp" href="../static/spade.webp">
 </head>
 
@@ -30,16 +31,28 @@
         </nav>
     </header>
 
+    <img src="../static/mtg.webp" alt="Left Image" class="left-image">
+    <img src="../static/mtg.webp" alt="Right Image" class="right-image">
+
     <section class="featured">
-        <h1 class="fhead">Blackjack</h1>
-        <p class="fsub">The rules of Blackjack can be found <a href="https://bicyclecards.com/how-to-play/blackjack/">here</a>.</p>
+        <h1 class="fhead">Magic the Gathering</h1>
+        <p>Card price checker (This will redirect): </p>
+        <form id="myForm">
+            <label for="cardInput"><Strong>Input Card Name Here:</strong></label>
+            <input type="text" id="cardInput" name="cardInput" required>
+            <br>
+            <label for="setInput"><Strong>Input Card Set Here:</strong></label>
+            <input type="text" id="setInput" name="setInput" required>
+            <br>
+            <input type="submit" value="Submit">
+          </form>
     </section>
 
     <footer>
         <p>&copy; 2024 Card Game Companion. All rights reserved.</p>
     </footer>
 
-    <script src="../js/blackjack.js"></script>
+    <script src="../js/mtg.js"></script>
 </body>
 
 </html>
