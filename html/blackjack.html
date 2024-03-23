@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Card Game Companion</title>
     <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/blackjack.css">
     <link rel="icon" type="image/webp" href="../static/spade.webp">
 </head>
 
@@ -33,8 +34,24 @@
 
     <section class="featured">
         <h1 class="fhead">Blackjack</h1>
-        <p class="fsub">The rules of Blackjack can be found <a href="https://bicyclecards.com/how-to-play/blackjack/">here</a>.</p>
+        <p class="fsub">The rules of Blackjack can be found <a
+                href="https://bicyclecards.com/how-to-play/blackjack/">here</a>.</p>
     </section>
+    <div id="gameContainer" class="gameContainer">
+        <div id="computerMatches" class="computerMatches"></div>
+        <div id="centerContainer" class="centerContainer">
+            <div class="container">
+                <div id="computerHand" class="computerHand"></div>
+            </div>
+            <div class="container">
+                <div id="centerDeck" class="centerDeck"></div>
+            </div>
+            <div class="container">
+                <div id="playerHand" class="playerHand"></div>
+            </div>
+        </div>
+        <div id="playerMatches" class="playerMatches"></div>
+    </div>
 
     <footer>
         <p>&copy; 2024 Card Game Companion. All rights reserved.</p>
