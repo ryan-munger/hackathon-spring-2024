@@ -1,8 +1,8 @@
 
-var deck = -1
+var deck = {}
 var playerHand = [];
 var compHand = [];
-var matches=[];
+var playerMatches=[];
 
 window.addEventListener("DOMContentLoaded", initGoFish);
 
@@ -20,6 +20,7 @@ function getCardBack(){
     return '<div class="cardBack"></div>';
 }
 
+
 function dealCards(player, number){
     var content = "";
     if (player=='p'){
@@ -29,9 +30,22 @@ function dealCards(player, number){
         }
         checkDeck()
         document.getElementById("playerHand").innerHTML += content;
-        checkForMatches(playerHand);
+        matches = checkForMatches(playerHand);
         console.log(matches);
-        console.log(playerHand);
+        console.log("------");
+        if (matches){
+            //get the matched cards and move them to the matches container
+            for (var i=0; i<matches.length;i++){
+                card1 = matches[i]['cards'][0]
+                card2 = matches[i]['cards'][1]
+                console.log(card1);
+                console.log(card2);
+                playerHand.splice(playerHand.indexOf(card1), 1);
+                playerHand.splice(playerHand.indexOf(card2), 1);
+            }
+            console.log("------");
+            console.log(playerHand);
+        }
     }
         
     else {
@@ -45,6 +59,7 @@ function dealCards(player, number){
 }
 
 function checkForMatches(hand) {
+    var matches = []
     size=hand.length;
     for (var i=0; i<size-1; i++){
         for (var j=i+1; j<size; j++){
