@@ -12,9 +12,10 @@ function generateDeck() {
                     'name': values[val]
                     , 'suit': suits[suit]
                     , 'value': val+1
-                    , 'color': (suits[suit]<2)?'red':'black'
+                    , 'color': (suit<2)?'red':'black'
                     , 'icon':'&'+((suits[suit]=='diamonds')?'diams':suits[suit])+';'
                     , 'centerDeco':''
+                    , 'faceUp' : false
                 }
             )
         }
