@@ -6,6 +6,7 @@
     <title>Card Game Companion</title>
     <link rel="stylesheet" href="../css/home.css">
     <link rel="stylesheet" href="../css/gf.css">
+
 </head>
 <body>
     <header>
@@ -20,18 +21,18 @@
             </ul>
         </nav>
     </header>
-    <div class="gameContainer">
+    <div id="gameContainer" class="gameContainer">
+        <div id="computerMatches" class="computerMatches"></div>
+            <div id="centerContainer" class="hands">
+                <div id="computerHand" class="computerHand"></div>
+                <div id="centerDeck" class="centerDeck"></div>
+                <div id="playerHand" class="playerHand"></div>
+            </div>
+        <div id="playerMatches" class="playerMatches"></div>
 
-        <div class="cardFront"> 
-                <p id="top">1 &spades;</p>
-                <p id="mid">&spades;</p>
-                <p id="bot">1 &spades;</p>
-        </div>
 
-        <div class="cardBack"> 
-        </div>
-
-</div>
-
+    </div>
+<script src="../js/gf.js"></script> 
+<script src="../js/cardDeck.js"></script> 
 </body>
 </html>

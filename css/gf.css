@@ -1,9 +1,10 @@
 /*For Cards*/
 
 .gameContainer{
-    padding:20px;
+    padding:40px;
     border: 12px dotted #51341a;
     height: 100vh;
+    overflow:scroll;
 }
 .cardFront {
     background-color: white;
