@@ -23,6 +23,7 @@
                         <li><a href="goFish.html">Go Fish!</a></li>
                         <li><a href="mtg.html">MTG</a></li>
                         <li><a href="pokemon.html">Pokemon</a></li>
+                        <li><a href="yugioh.html">YuGiOh</a></li>
                     </ul>
                 </li>
                 <li><a id="lucky">I'm feeling lucky</a></li>
@@ -45,7 +46,19 @@
             <input type="text" id="setInput" name="setInput" required>
             <br>
             <input type="submit" value="Submit">
-          </form>
+        </form>
+        <br>
+        <p>Player Health</p>
+        <div class="container-L">
+            <input class="left-player" type="number" id="numberInput" value="20" min="0" max="100">
+            <button onclick="increment()">+</button>
+            <button onclick="decrement()">-</button>
+        </div>
+        <div class="container-R">
+            <input class="left-player" type="number" id="numberInput" value="20" min="0" max="100">
+            <button onclick="increment()">+</button>
+            <button onclick="decrement()">-</button>
+        </div>
     </section>
 
     <footer>

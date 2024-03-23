@@ -31,3 +31,13 @@
         /* Hide the images on smaller screens */
     }
 }
+
+.container-R {
+    display: inline-block;
+    margin-left: 100px;
+}
+
+.container-L {
+    display: inline-block;
+    margin-right: 100px;
+}

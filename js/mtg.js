@@ -34,17 +34,31 @@ function processInput(cardIn, setIn) {
 function capitalizeWordsExcept(str) {
     // Split the string into words
     let words = str.split(' ');
-  
+
     // Define words to exclude from capitalization
     const excludedWords = ['of', 'to', 'the', 'and'];
-  
+
     // Capitalize each word that is not in the excluded list
     for (let i = 0; i < words.length; i++) {
-      if (!excludedWords.includes(words[i].toLowerCase())) {
-        words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1);
-      }
+        if (!excludedWords.includes(words[i].toLowerCase())) {
+            words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1);
+        }
     }
-  
+
     // Join the words back together into a single string
     return words.join('+');
-  }
+}
+
+function increment() {
+    var input = document.getElementById('numberInput');
+    var value = parseInt(input.value, 10);
+    input.value = value + 1;
+}
+
+function decrement() {
+    var input = document.getElementById('numberInput');
+    var value = parseInt(input.value, 10);
+    if (value > 0) {
+        input.value = value - 1;
+    }
+}
