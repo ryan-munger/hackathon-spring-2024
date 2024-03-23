@@ -59,8 +59,18 @@ nav ul li:hover > ul {
 
 .gif {
     display: block;
-    margin: 0 auto; 
-    max-width: 100%; 
+    margin: 0 auto; /* Center the GIF horizontally */
+    max-width: 100%; /* Ensure the GIF does not exceed the container width */
+    width: 200px; /* Set the width of the GIF */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.gif2 {
+    display: block;
+    margin: 0 auto; /* Center the GIF horizontally */
+    max-width: 100%; /* Ensure the GIF does not exceed the container width */
+    width: 250px; /* Set the width of the GIF */
+    height: auto; /* Maintain aspect ratio */
 }
 
 section.featured {
