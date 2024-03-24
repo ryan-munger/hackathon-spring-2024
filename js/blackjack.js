@@ -178,7 +178,7 @@ function lose(bust) {
     if(bust){
         document.getElementById("message").innerHTML = "Bust! You lose! <button class='reload' onclick='reloadPage()'>Play Again</button>";
     } else {
-        document.getElementById("message").innerHTML = "Dealer wins! <button class='reload' onclick='reloadPage()'>Play Again</button>";
+        document.getElementById("message").innerHTML = "You Lose by Worse Hand! <button class='reload' onclick='reloadPage()'>Play Again</button>";
     }
 }
 
