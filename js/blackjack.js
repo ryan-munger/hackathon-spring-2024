@@ -143,7 +143,18 @@ function checkBust(player) {
             total += playerHand[i].value;
         }
         if (total > 21) {
-            lose(true);
+            for(let i = 0; i < playerHand.length; i++){
+                if(playerHand[i].name == 'A'){
+                    playerHand[i].value = 1;
+                }
+            }
+            total = 0;
+            for(let i = 0; i < playerHand.length; i++){
+                total += playerHand[i].value;
+            }
+            if (total > 21) {
+                lose(true);
+            }
         }
     } else {
         console.log('checking')
@@ -152,22 +163,31 @@ function checkBust(player) {
             total += compHand[i].value;
         }
         if(total > 21){
-            win();
+            win(true);
         }
     } 
 }
 
+function reloadPage() {
+    location.reload();
+}
+
 function lose(bust) {
+    console.log(playerHand)
+    console.log(compHand)
     if(bust){
-        alert('Bust! You lose!');
+        document.getElementById("message").innerHTML = "Bust! You lose! <button class='reload' onclick='reloadPage()'>Play Again</button>";
     } else {
-        alert('Dealer Wins!')
+        document.getElementById("message").innerHTML = "Dealer wins! <button class='reload' onclick='reloadPage()'>Play Again</button>";
     }
 }
 
-function win() {
-    alert('You Win!!!')
-    console.log('win');
+function win(bust) {
+    if(bust){
+        document.getElementById("message").innerHTML = "You Win by Dealer Bust! <button class='reload' onclick='reloadPage()'>Play Again</button>";
+    } else {
+        document.getElementById("message").innerHTML = "You Win by Better Hand! <button class='reload' onclick='reloadPage()'>Play Again</button>";
+    }
 }
 
 document.getElementById("lucky").addEventListener("click", function() {

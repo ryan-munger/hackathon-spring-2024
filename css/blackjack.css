@@ -1,88 +1,108 @@
 /*For Cards*/
 
-.gameContainer{
+.gameContainer {
     border: 12px dotted #51341a;
     height: 100vh;
-    overflow:scroll;
-    display:grid;
-    grid-template-columns: auto auto auto; 
+    overflow: scroll;
+    display: grid;
+    grid-template-columns: auto auto auto;
 }
 
 .button {
     font-size: 30px;
-    background-color: gold;    
+    background-color: gold;
+    max-width: 200px;
+}
+
+.reload {
+    font-size: 30px;
+    background-color: red;
     max-width: 200px;
 }
 
 .centerContainer {
-    display:grid;
+    display: grid;
     grid-template-rows: auto auto auto;
 }
 
-
-.container {
-    display:flex;
-    justify-self: center;
-    margin:15px;
+.message {
+    font-size: 50px;
+    text-align: center;
+    color: black;
+    font-weight: 600;
 }
 
-.computerHand, .playerHand {
-    display:flex;
+.container {
+    display: flex;
+    justify-self: center;
+    margin: 15px;
+}
+
+.computerHand,
+.playerHand {
+    display: flex;
     flex-direction: row;
     width: 100%;
     align-items: center;
     vertical-align: middle;
 }
 
-.computerMatches, .playerMatches {
-    width:100%;
+.computerMatches,
+.playerMatches {
+    width: 100%;
 }
 
 .cardFront {
     background-color: white;
-    width:110px;
-    height:150px;
-    display:grid;
+    width: 110px;
+    height: 150px;
+    display: grid;
     grid-template-columns: auto auto auto;
     border-radius: 4px;
     border-width: 1;
-    box-shadow: #51341a 0 3px 4px,#51341a 0 6px 13px -3px, #51341a 0 -3px 0 inset;
+    box-shadow: #51341a 0 3px 4px, #51341a 0 6px 13px -3px, #51341a 0 -3px 0 inset;
     box-sizing: border-box;
-    margin:10px;
+    margin: 10px;
 }
 
 .cardFront p {
-    height:150px;
-    padding:10px;
+    height: 150px;
+    padding: 10px;
     font-size: small;
     display: flex;
 }
 
-.cardFront #mid{
-    justify-content: center; /* Align horizontal */
-    align-items: center; /* Align vertical */
+.cardFront #mid {
+    justify-content: center;
+    /* Align horizontal */
+    align-items: center;
+    /* Align vertical */
 }
 
-.cardFront #bot{
-    justify-content:end; /* Align horizontal */
-    align-items:end; /* Align vertical */
+.cardFront #bot {
+    justify-content: end;
+    /* Align horizontal */
+    align-items: end;
+    /* Align vertical */
 }
 
 .cardBack {
-    background-color:#c42e1c;
-    width:110px;
-    height:150px;
+    background-color: #c42e1c;
+    width: 110px;
+    height: 150px;
     border-radius: 4px;
     border-width: 1;
-    box-shadow: #51341a 0 3px 4px,#51341a 0 6px 13px -3px, #51341a 0 -3px 0 inset;
+    box-shadow: #51341a 0 3px 4px, #51341a 0 6px 13px -3px, #51341a 0 -3px 0 inset;
     box-sizing: border-box;
-    margin:10px;
+    margin: 10px;
 }
 
-.cardFront:hover, .cardBack:hover {
+.cardFront:hover,
+.cardBack:hover {
     transform: translate(0px, -2px);
 }
 
-.cardFront:active, .cardBack:active {
+.cardFront:active,
+.cardBack:active {
     transform: translate(0px, 2px);
 }
