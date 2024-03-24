@@ -30,22 +30,7 @@ function dealCards(player, number){
         }
         checkDeck()
         document.getElementById("playerHand").innerHTML += content;
-        matches = checkForMatches(playerHand);
-        console.log(matches);
-        console.log("------");
-        if (matches){
-            //get the matched cards and move them to the matches container
-            for (var i=0; i<matches.length;i++){
-                card1 = matches[i]['cards'][0]
-                card2 = matches[i]['cards'][1]
-                console.log(card1);
-                console.log(card2);
-                playerHand.splice(playerHand.indexOf(card1), 1);
-                playerHand.splice(playerHand.indexOf(card2), 1);
-            }
-            console.log("------");
-            console.log(playerHand);
-        }
+        manageMatches('p', playerHand);
     }
         
     else {
@@ -58,16 +43,32 @@ function dealCards(player, number){
     return deck;
 }
 
+function manageMatches(player, hand){
+    matches = checkForMatches(hand);
+        console.log(matches);
+        console.log("------");
+        if (matches){
+            //get the matched cards and move them to the matches container
+            for (var i=0; i<matches.length;i++){
+                console.log(matches[i]);
+                hand.splice(hand.indexOf(matches[i]), 1);
+            }
+            console.log("------");
+            console.log(hand);
+        }
+    
+}
+
 function checkForMatches(hand) {
     var matches = []
     size=hand.length;
     for (var i=0; i<size-1; i++){
         for (var j=i+1; j<size; j++){
             if (hand[i].value==hand[j].value){
-                matches.push({
-                     'value':hand[i].value
-                    ,'cards':[hand[i], hand[j]]
-                })
+                if (matches.indexOf(hand[i])==-1){
+                    matches.push(hand[i]); 
+                    matches.push(hand[j])
+                }
             }
         }
     }
