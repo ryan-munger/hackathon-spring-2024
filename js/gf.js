@@ -6,18 +6,56 @@ var playerMatches=[];
 
 window.addEventListener("DOMContentLoaded", initGoFish);
 
-function getCardFront(){
-    let i = deck.length-1; //get the card from top of deck
+function getCardFront(cd){ //returns the html for the front of a card
     card = '<div class="cardFront">' +
-    '<p id="top">'+ deck[i].name + deck[i].icon +'</p>' +
-    '<p id="mid">'+ deck[i].icon + '</p>' +
-    '<p id="bot">'+ deck[i].name + deck[i].icon +'</p>' +
+    '<p id="top">'+ cd.name + cd.icon +'</p>' +
+    '<p id="mid">'+ cd.icon + '</p>' +
+    '<p id="bot">'+ cd.name + cd.icon +'</p>' +
     '</div>';
     return card;
 }
 
 function getCardBack(){
     return '<div class="cardBack"></div>';
+}
+
+function moveCard(){
+    pass
+}
+
+function dealCardsFromDeck(player, number){ 
+    //will distribute a specified number of cards 
+    //to the specified player's hand
+    var content = "";
+    if (player=='p'){
+        for (let i=0; i<number;i++){ 
+            card = deck.pop(); //choose card from top of deck
+            content += getCardFront(card);
+            playerHand.push(card) //deal card to player
+        }
+        checkDeck()
+        document.getElementById("playerHand").innerHTML += content;
+    }
+    else {
+        for (let i=0; i<number;i++){ //choose card from top of deck
+            card = deck.pop();
+            content += getCardBack();
+            compHand.push(card) //remove top card from deck
+        }
+        checkDeck();
+        document.getElementById("computerHand").innerHTML += content;
+    }
+}
+
+
+function resetHand(player){
+    var content = "";
+    if (player=='p'){
+        for (let i=0; i<number;i++){ //choose card from top of deck
+            content += getCardFront(card);
+            playerHand.push(deck.pop()) //remove top card from deck
+        }
+    }
 }
 
 
@@ -30,7 +68,6 @@ function dealCards(player, number){
         }
         checkDeck()
         document.getElementById("playerHand").innerHTML += content;
-        manageMatches('p', playerHand);
     }
         
     else {
@@ -40,7 +77,7 @@ function dealCards(player, number){
         }
         document.getElementById("computerHand").innerHTML += content;
     }
-    return deck;
+
 }
 
 function manageMatches(player, hand){
@@ -87,8 +124,8 @@ function checkDeck() {
 
 function initGoFish(){
     deck = shuffleDeck(generateDeck());
-    dealCards('p', 7);
-    dealCards('c', 7);
+    dealCardsFromDeck('p', 7);
+    dealCardsFromDeck('c', 7);
 }
 
 document.getElementById("lucky").addEventListener("click", function() {
