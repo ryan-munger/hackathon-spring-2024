@@ -5,7 +5,7 @@ var playerHand = [];
 var compHand = [];
 var playerMatches=[];
 id=null;
-const delay = 200;
+const delay = 250;
 const cardPositions = { 
     "p": {
         7: [66, 83]
@@ -22,7 +22,7 @@ function sleep(ms) {
 }
 
 function getCardFront(cd){ //returns the html for the front of a card
-    card = '<div class="cardFront">' +
+    card = '<div id="' + cd.name+cd.suit +  '" class="cardFront">' +
     '<p id="top">'+ cd.name + cd.icon +'</p>' +
     '<p id="mid">'+ cd.icon + '</p>' +
     '<p id="bot">'+ cd.name + cd.icon +'</p>' +
@@ -34,7 +34,7 @@ function getCardBack(){
     return '<div class="cardBack"></div>';
 }
 
-async function moveCard(player, num){
+async function moveCardFromDeck(player, num){
     var elem = document.getElementById("cardInPlayContainer");
     elem.innerHTML=getCardBack();
     var posY = 50;
@@ -44,7 +44,7 @@ async function moveCard(player, num){
     elem.style.left = posX + '%';
     elem.style.top = posY + '%';
     clearInterval(id);
-    id = setInterval(frame, 10);
+    id = setInterval(frame, 8);
     async function frame() {
         if (player == "p"){
             if (posX<=targetX && posY<=targetY){
@@ -84,7 +84,7 @@ async function moveCard(player, num){
                 clearInterval(id);
             }
         }
-        await sleep(number*delay)
+        await sleep(num*delay)
     }
 }
 
@@ -93,11 +93,11 @@ async function dealCardsFromDeck(player, number){
     //to the specified player's hand
     if (player=='p'){
         for (let i=0; i<number;i++){ 
-            card = deck.pop(); //choose card from top of deck
+            let card = deck.pop(); //choose card from top of deck
             content = getCardFront(card);
             checkDeck();
             await sleep(delay);
-            moveCard(player, number);
+            moveCardFromDeck(player, number);
             playerHand.push(card) //deal card to player
             await sleep(delay);
             document.getElementById("playerHand").innerHTML += content; //show card in player's hand on screen
@@ -106,11 +106,11 @@ async function dealCardsFromDeck(player, number){
     }
     else {
         for (let i=0; i<number;i++){ //choose card from top of deck
-            card = deck.pop();
+            let card = deck.pop();
             content = getCardBack();
             checkDeck();
             await sleep(delay);
-            moveCard(player, number);
+            moveCardFromDeck(player, number);
             compHand.push(card) //remove top card from deck
             await sleep(delay);
             document.getElementById("computerHand").innerHTML += content;
@@ -131,58 +131,21 @@ function resetHand(player){
 }
 
 
-function dealCards(player, number){
-    var content = "";
-    if (player=='p'){
-        for (let i=0; i<number;i++){ //choose card from top of deck
-            content += getCardFront();
-            playerHand.push(deck.pop()) //remove top card from deck
-        }
-        checkDeck()
-        document.getElementById("playerHand").innerHTML += content;
-    }
-        
-    else {
-        for (let i=0; i<number;i++){ //choose card from top of deck
-            content += getCardBack();
-            compHand.push(deck.pop()) //remove top card from deck
-        }
-        document.getElementById("computerHand").innerHTML += content;
-    }
-
-}
-
-function manageMatches(player, hand){
-    matches = checkForMatches(hand);
-        console.log(matches);
-        console.log("------");
-        if (matches){
-            //get the matched cards and move them to the matches container
-            for (var i=0; i<matches.length;i++){
-                console.log(matches[i]);
-                hand.splice(hand.indexOf(matches[i]), 1);
-            }
-            console.log("------");
-            console.log(hand);
-        }
-    
-}
-
-function checkForMatches(hand) {
+function checkForMatches(hand1, hand2) {
     var matches = []
-    size=hand.length;
-    for (var i=0; i<size-1; i++){
-        for (var j=i+1; j<size; j++){
-            if (hand[i].value==hand[j].value){
-                if (matches.indexOf(hand[i])==-1){
-                    matches.push(hand[i]); 
-                    matches.push(hand[j])
+    for (var i=0; i<hand1.length-1; i++){
+        for (var j=i+1; j<hand2.length; j++){
+            if (hand1[i].value==hand2[j].value){
+                if (matches.indexOf(hand1[i])==-1){
+                    matches.push(hand1[i]);
+                    matches.push(hand2[j]);
                 }
             }
         }
     }
     return matches;
 }
+
 
 function checkDeck() {
     if (!document.getElementById("centerDeck").innerHTML && deck.length>0){
@@ -199,6 +162,14 @@ async function initGoFish(){
     await dealCardsFromDeck('p', 7);
     await dealCardsFromDeck('c', 7);
     await sleep(delay);
+    matches = checkForMatches(playerHand, playerHand);
+
+    for (let i=0; i<matches.length; i++){
+        let card = document.getElementById(matches[i].name+matches[i].suit);
+        card.style.backgroundColor = "gold";
+        card.style.translate = "0px -10px";
+    }
+
 }
 
 document.getElementById("lucky").addEventListener("click", function() {
