@@ -1,10 +1,25 @@
 
+
 var deck = {}
 var playerHand = [];
 var compHand = [];
 var playerMatches=[];
+id=null;
+const delay = 200;
+const cardPositions = { 
+    "p": {
+        7: [66, 83]
+    },
+    "c":{
+        7: [26, 23] 
+    }
+}
 
 window.addEventListener("DOMContentLoaded", initGoFish);
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 function getCardFront(cd){ //returns the html for the front of a card
     card = '<div class="cardFront">' +
@@ -19,31 +34,88 @@ function getCardBack(){
     return '<div class="cardBack"></div>';
 }
 
-function moveCard(){
-    pass
+async function moveCard(player, num){
+    var elem = document.getElementById("cardInPlayContainer");
+    elem.innerHTML=getCardBack();
+    var posY = 50;
+    var posX = 50;
+    var targetX = cardPositions[player][num][0];
+    var targetY = cardPositions[player][num][1];
+    elem.style.left = posX + '%';
+    elem.style.top = posY + '%';
+    clearInterval(id);
+    id = setInterval(frame, 10);
+    async function frame() {
+        if (player == "p"){
+            if (posX<=targetX && posY<=targetY){
+                posX+=1;
+                posY+=2;
+                elem.style.left = posX + '%';
+                elem.style.top = posY + '%'; 
+            }
+            else if (posX<=targetX ) {
+                posX+=1;
+                elem.style.left = posX + '%';
+            } 
+            else if (posY <=targetY ){ 
+                posY+=1; 
+                elem.style.top = posY + '%';  
+            }
+            else{
+                clearInterval(id);
+            }
+        }
+        else {
+            if (posX>=targetX && posY>=targetY){
+                posX-=1;
+                posY-=2;
+                elem.style.left = posX + '%';
+                elem.style.top = posY + '%'; 
+            }
+            else if (posX>=targetX ) {
+                posX-=1;
+                elem.style.left = posX + '%';
+            } 
+            else if (posY >=targetY ){ 
+                posY-=1; 
+                elem.style.top = posY + '%';  
+            }
+            else{
+                clearInterval(id);
+            }
+        }
+        await sleep(number*delay)
+    }
 }
 
-function dealCardsFromDeck(player, number){ 
+async function dealCardsFromDeck(player, number){ 
     //will distribute a specified number of cards 
     //to the specified player's hand
-    var content = "";
     if (player=='p'){
         for (let i=0; i<number;i++){ 
             card = deck.pop(); //choose card from top of deck
-            content += getCardFront(card);
+            content = getCardFront(card);
+            checkDeck();
+            await sleep(delay);
+            moveCard(player, number);
             playerHand.push(card) //deal card to player
+            await sleep(delay);
+            document.getElementById("playerHand").innerHTML += content; //show card in player's hand on screen
+            document.getElementById("cardInPlayContainer").innerHTML='';
         }
-        checkDeck()
-        document.getElementById("playerHand").innerHTML += content;
     }
     else {
         for (let i=0; i<number;i++){ //choose card from top of deck
             card = deck.pop();
-            content += getCardBack();
+            content = getCardBack();
+            checkDeck();
+            await sleep(delay);
+            moveCard(player, number);
             compHand.push(card) //remove top card from deck
+            await sleep(delay);
+            document.getElementById("computerHand").innerHTML += content;
+            document.getElementById("cardInPlayContainer").innerHTML='';
         }
-        checkDeck();
-        document.getElementById("computerHand").innerHTML += content;
     }
 }
 
@@ -122,10 +194,11 @@ function checkDeck() {
 }
 
 
-function initGoFish(){
+async function initGoFish(){
     deck = shuffleDeck(generateDeck());
-    dealCardsFromDeck('p', 7);
-    dealCardsFromDeck('c', 7);
+    await dealCardsFromDeck('p', 7);
+    await dealCardsFromDeck('c', 7);
+    await sleep(delay);
 }
 
 document.getElementById("lucky").addEventListener("click", function() {

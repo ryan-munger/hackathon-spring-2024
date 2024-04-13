@@ -79,3 +79,9 @@
 .cardFront:active, .cardBack:active {
     transform: translate(0px, 2px);
 }
+
+.cardInPlayContainer {
+    position:absolute;
+    top: 50%;
+    left: 50%;
+}
