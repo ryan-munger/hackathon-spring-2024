@@ -30,8 +30,12 @@ function getCardFront(cd){ //returns the html for the front of a card
     return card;
 }
 
-function getCardBack(){
-    return '<div class="cardBack"></div>';
+function getCardBack(cd){
+    let id = "cardBack";
+    if (cd){
+        id = cd.name+cd.suit;
+    }
+    return '<div id="'+ id +'" class="cardBack"></div>';
 }
 
 async function moveCardFromDeck(player, num){
@@ -107,7 +111,7 @@ async function dealCardsFromDeck(player, number){
     else {
         for (let i=0; i<number;i++){ //choose card from top of deck
             let card = deck.pop();
-            content = getCardBack();
+            content = getCardBack(card);
             checkDeck();
             await sleep(delay);
             moveCardFromDeck(player, number);
@@ -146,6 +150,23 @@ function checkForMatches(hand1, hand2) {
     return matches;
 }
 
+function manageMatches(matches, player){
+    var selected = [];
+    for (let i=0; i<2; i++){
+        let card = document.getElementById(matches[i].name+matches[i].suit);
+        card.style.backgroundColor = "gold";
+        card.addEventListener("click", ()=> {
+            card.style.translate = "0px -30px";
+            selected.push(matches[i]);
+            if (selected.length==2){
+                document.getElementById("cardInPlayContainer").innerHTML += getCardFront(selected[0]);
+                document.getElementById("cardInPlayContainer").innerHTML += getCardFront(selected[1]);
+                //next: get cards, remove cards from player hand and move them to the matched pile to the right of screen.
+            }
+        });
+    }
+}
+
 
 function checkDeck() {
     if (!document.getElementById("centerDeck").innerHTML && deck.length>0){
@@ -162,12 +183,9 @@ async function initGoFish(){
     await dealCardsFromDeck('p', 7);
     await dealCardsFromDeck('c', 7);
     await sleep(delay);
-    matches = checkForMatches(playerHand, playerHand);
-
-    for (let i=0; i<matches.length; i++){
-        let card = document.getElementById(matches[i].name+matches[i].suit);
-        card.style.backgroundColor = "gold";
-        card.style.translate = "0px -10px";
+    let matches = checkForMatches(playerHand, playerHand);
+    if (matches){
+        manageMatches(matches, "p");
     }
 
 }
